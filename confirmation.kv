@@ -1,0 +1,55 @@
+#:kivy 1.8.0
+#:import Factory kivy.factory.Factory
+#:import ActionIconButton buttons
+<ConfirmScreen>:
+    canvas.before:
+        Color:
+            rgb: .6, .6, .6
+        Rectangle:
+            size: self.size
+            source: 'img/background.png'
+    FloatLayout:
+        Image:
+            source: 'img/appicon.png'
+            pos_hint: {'x': 0, 'y': root.y - .28}
+        Label:
+            halign: 'center'
+            text: "LEVERAGING THE POWER OF THE BLOCKCHAIN"
+            pos_hint: {'x': 0, 'y': root.y - .43}
+            font_size: '12sp'
+        Label:
+            halign: 'center'
+            text: "W   A   I   T   I   N   G            F   O   R            S   A   T   O   S   H   I"
+            pos_hint: {'x': 0, 'y': root.y - .45}
+            font_size: '8sp'
+
+        Label:
+            halign: 'center'
+            text: "PLEASE CHECK YOUR EMAIL!"
+            pos_hint: {'x': 0, 'y': root.y + .28}
+            font_size: '32sp'
+        Label:
+            halign: 'center'
+            text: "After confirming receipt of email, you may proceed..."
+            pos_hint: {'x': 0, 'y': root.y + .22}
+            font_size: '20sp'
+
+        ActionBar:
+            pos_hint: {'x': .0, 'y': .92}
+            background_color: [0,0,0,1]
+            ActionView:
+
+                use_separator: True
+                ActionPrevious:
+                    app_icon:'img/logo.png'
+                    title: 'CLAIMS-BASED IP PROTECTION'
+                    on_press: root.go_home()
+                    with_previous: False
+                ActionOverflow:
+                ActionButton:
+                    icon:''
+                    disabled: True
+                ActionButton:
+                    icon: 'img/next-disabled.png'
+                    text: 'Next'
+                    on_press: root.confirm_email_callback()

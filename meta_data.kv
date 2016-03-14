@@ -1,0 +1,96 @@
+#:import os os
+<MetadataScreen>:
+    canvas.before:
+        Color:
+            rgb: .6, .6, .6
+        Rectangle:
+            size: self.size
+            source: 'img/background.png'
+    FloatLayout:
+        Image:
+            source: 'img/appicon.png'
+            pos_hint: {'x': 0, 'y': root.y - .28}
+        Label:
+            halign: 'center'
+            text: "LEVERAGING THE POWER OF THE BLOCKCHAIN"
+            pos_hint: {'x': 0, 'y': root.y - .43}
+            font_size: '12sp'
+        Label:
+            halign: 'center'
+            text: "W   A   I   T   I   N   G            F   O   R            S   A   T   O   S   H   I"
+            pos_hint: {'x': 0, 'y': root.y - .45}
+            font_size: '8sp'
+        Label:
+            halign: 'center'
+            text: "FILE DETAILS FOR CLAIM"
+            pos_hint: {'x': 0, 'y': root.y + .32}
+            font_size: '32sp'
+
+        Label:
+            text: "File Name:"
+            bold: True
+            pos_hint: {'x': .30, 'y': .65}
+            size_hint: .2, .06
+            text_size: self.size
+            halign: 'right'
+            font_size: '20sp'
+        Label:
+            id: filename
+            halign: 'left'
+            pos_hint: {'x': .51, 'y': .65}
+            size_hint: .3, .06
+            text_size: self.size
+            text: ""+root.notary_file_no_path
+            font_size: '20sp'
+        Label:
+            text: "Date Created:"
+            bold: True
+            pos_hint: {'x': .30, 'y': .55}
+            size_hint: .2, .06
+            text_size: self.size
+            halign: 'right'
+            font_size: '20sp'
+        Label:
+            pos_hint: {'x': .51,  'y': .55}
+            id: filename
+            halign: 'left'
+            text: ""+root.file_created_dt
+            size_hint: .3, .06
+            text_size: self.size
+            font_size: '20sp'
+        Label:
+            text: "Created By:"
+            bold: True
+            pos_hint: {'x': .30, 'y': .45}
+            size_hint: .2, .06
+            halign: 'right'
+            text_size: self.size
+            font_size: '20sp'
+        Label:
+            pos_hint: {'x': .51,  'y': .45}
+            halign: 'left'
+            id: filename
+            text: ""+root.file_created_by
+            size_hint: .3, .06
+            text_size: self.size
+            font_size: '20sp'
+
+        ActionBar:
+            pos_hint: {'x': .0, 'y': .92}
+            background_color: [0,0,0,1]
+            ActionView:
+                use_separator: True
+                ActionPrevious:
+                    app_icon:'img/logo.png'
+                    title: 'CLAIMS-BASED IP PROTECTION'
+                    with_previous: False
+                    on_press: root.go_home()
+                ActionOverflow:
+                ActionButton:
+                    icon:'img/prev-disabled.png'
+                    text:'Previous'
+                    on_press: root.manager.current = 'selectnotaryfile'
+                ActionButton:
+                    icon:'img/next-disabled.png'
+                    text: 'Next'
+                    on_press: root.yes_callback()

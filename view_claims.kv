@@ -1,0 +1,46 @@
+<ViewClaimsScreen>:
+    on_pre_enter:root.on_enter_event()
+    on_leave:root.on_leave_event()
+    canvas.before:
+        Color:
+            rgb: .6, .6, .6
+        Rectangle:
+            size: self.size
+            source: 'img/background.png'
+    FloatLayout:
+        Image:
+            source: 'img/appicon.png'
+            pos_hint: {'x': 0, 'y': root.y - .28}
+        Label:
+            halign: 'center'
+            text: "LEVERAGING THE POWER OF THE BLOCKCHAIN"
+            pos_hint: {'x': 0, 'y': root.y - .43}
+            font_size: '12sp'
+        Label:
+            halign: 'center'
+            text: "W   A   I   T   I   N   G            F   O   R            S   A   T   O   S   H   I"
+            pos_hint: {'x': 0, 'y': root.y - .45}
+            font_size: '8sp'
+        BoxLayout:
+            orientation: 'vertical'
+            id: 'logobar'
+            ActionBar:
+                background_color: [0,0,0,1]
+                ActionView:
+
+                    use_separator: True
+                    ActionPrevious:
+                        app_icon:'img/logo.png'
+                        title: 'CLAIMS-BASED IP PROTECTION'
+                        with_previous: False
+                        on_press: root.go_home()
+                    ActionOverflow:
+                    ActionButton:
+                        icon:'img/prev-disabled.png'
+                        on_press: root.manager.current = 'landingpage'
+                    ActionButton:
+                        icon:'img/next-disabled.png'
+                        text: 'Next'
+                        on_press: root.manager.current = 'landingpage'
+            BoxLayout:
+                id: claimsgrid

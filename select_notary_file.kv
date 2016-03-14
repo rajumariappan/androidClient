@@ -1,0 +1,48 @@
+#:import getpass getpass
+<SelectNotaryFileScreen>:
+    canvas.before:
+        Color:
+            rgb: .6, .6, .6
+        Rectangle:
+            size: self.size
+            source: 'img/background.png'
+    FloatLayout:
+        BoxLayout:
+            orientation: 'vertical'
+            ActionBar:
+                background_color: [0,0,0,1]
+                ActionView:
+
+                    use_separator: True
+                    ActionPrevious:
+                        app_icon:'img/logo.png'
+                        title: 'CLAIMS-BASED IP PROTECTION'
+                        with_previous: False
+                        on_press: root.go_home()
+                    ActionOverflow:
+                    ActionButton:
+                        icon:'img/prev-disabled.png'
+                        on_press: root.manager.current = 'landingpage'
+                    ActionButton:
+                        icon:'img/next-disabled.png'
+                        text: 'Next'
+                        on_press: root.next_callback()
+            Label:
+                text: "Please select a file to upload below:"
+                id: filelabel
+                pos_hint: {'x': .0, 'y': .0}
+                size_hint: .45, .1
+                halign: 'left'
+                font_size: '20sp'
+            FileChooserIconView:
+                id: filechooser
+                show_hidden: False
+                on_selection: root.my_callback(filechooser.selection)
+                rootpath: str('/Users/' + getpass.getuser() + '/')
+            Label:
+                text: ""
+                id: filelabel
+                pos_hint: {'x': .0, 'y': .0}
+                size_hint: .1, .1
+                halign: 'left'
+                font_size: '20sp'

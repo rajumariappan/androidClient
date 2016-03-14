@@ -1,0 +1,60 @@
+#:kivy 1.8.0
+#:import Factory kivy.factory.Factory
+<RegisterWalletScreen>:
+    canvas.before:
+        Color:
+            rgb: .6, .6, .6
+        Rectangle:
+            size: self.size
+            source: 'img/background.png'
+    FloatLayout:
+        Image:
+            source: 'img/appicon.png'
+            pos_hint: {'x': 0, 'y': root.y - .28}
+        Label:
+            halign: 'center'
+            text: "LEVERAGING THE POWER OF THE BLOCKCHAIN"
+            pos_hint: {'x': 0, 'y': root.y - .43}
+            font_size: '12sp'
+        Label:
+            halign: 'center'
+            text: "W   A   I   T   I   N   G            F   O   R            S   A   T   O   S   H   I"
+            pos_hint: {'x': 0, 'y': root.y - .45}
+            font_size: '8sp'
+
+        Label:
+            halign: 'center'
+            text: "CREATE AN ACCOUNT WITH 1STYOOS"
+            pos_hint: {'x': 0, 'y': root.y + .32}
+            font_size: '32sp'
+        Label:
+            text: "Your Email:"
+            pos_hint: {'x': .07, 'y': .7}
+            size_hint: .32, .06
+            halign: 'right'
+            font_size: '20sp'
+        TextInput:
+            id: email
+            pos_hint: {'x': .30, 'y': .7}
+            size_hint: .5, .06
+            font_size: '20sp'
+
+        ActionBar:
+            pos_hint: {'x': .0, 'y': .92}
+            background_color: [0,0,0,1]
+            ActionView:
+
+                use_separator: True
+                ActionPrevious:
+                    app_icon:'img/logo.png'
+                    title: 'CLAIMS-BASED IP PROTECTION'
+                    with_previous: False
+                    on_press: root.go_home()
+                ActionOverflow:
+                ActionButton:
+                    icon:''
+                    disabled: True
+                ActionButton:
+                    icon:'img/next-disabled.png'
+                    text: 'Next'
+                    on_press: root.register_wallet_callback()

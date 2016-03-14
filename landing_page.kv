@@ -1,0 +1,73 @@
+#:import ListItemButton kivy.uix.listview.ListItemButton
+#:import ListItemButton kivy.uix.listview.ListView
+<ListView>
+    canvas.before:
+        Color:
+            rgb: .6, .6, .6
+        Rectangle:
+            size: self.size
+            source: 'img/background.png'
+
+<ListItemButton>:
+    selected_color: 0, .3, 1, 1
+    deselected_color: 0, 0, 0, 0
+<LandingScreen>:
+    canvas.before:
+        Color:
+            rgb: .6, .6, .6
+        Rectangle:
+            size: self.size
+            source: 'img/background.png'
+    FloatLayout:
+        Image:
+            source: 'img/appicon.png'
+            pos_hint: {'x': 0, 'y': root.y - .28}
+        Label:
+            halign: 'center'
+            text: "LEVERAGING THE POWER OF THE BLOCKCHAIN"
+            pos_hint: {'x': 0, 'y': root.y - .43}
+            font_size: '12sp'
+        Label:
+            halign: 'center'
+            text: "W   A   I   T   I   N   G            F   O   R            S   A   T   O   S   H   I"
+            pos_hint: {'x': 0, 'y': root.y - .45}
+            font_size: '8sp'
+
+        Label:
+            id:selected_file
+            text: "File a new claim, or view previously filed claims:"
+            pos_hint: {'x': .15, 'y': .7}
+            size_hint: .7, .1
+            halign: 'left'
+            font_size: '20sp'
+
+        Button:
+            text: 'File New Claim'
+            pos_hint: {'x': .27, 'y': .5}
+            size_hint: .2, .1
+            font_size: '20sp'
+            on_press: root.manager.current = 'selectnotaryfile'
+        Button:
+            text: 'View Claims'
+            pos_hint: {'x': .52, 'y': .5}
+            size_hint: .2, .1
+            font_size: '20sp'
+            on_press: root.manager.current = 'viewclaims'
+        ActionBar:
+            pos_hint: {'x': .0, 'y': .92}
+            background_color: [0,0,0,1]
+            ActionView:
+
+                use_separator: True
+                ActionPrevious:
+                    app_icon:'img/logo.png'
+                    title: 'CLAIMS-BASED IP PROTECTION'
+                    with_previous: False
+                    on_press: root.go_home()
+                ActionOverflow:
+                ActionButton:
+                    icon:''
+                    disabled: True
+                ActionButton:
+                    icon:''
+                    disabled: True

@@ -1,0 +1,19 @@
+from plain_wallet import PlainWallet
+
+# This is a factory method to instantiate a wallet. The wallet constructor handles the logic
+# of determining whether a wallet needs to be created from scratch.
+def create_wallet(wallet_type, key, logger):
+    if wallet_type == 'ServerWallet':
+        from server_wallet import ServerWallet
+        wallet = ServerWallet(key, logger)
+    elif wallet_type == 'ClientWallet':
+        from client_wallet import ClientWallet
+        wallet = ClientWallet(key)
+    elif wallet_type == 'MemoryWallet':
+        from memory_wallet import MemoryWallet
+        wallet = MemoryWallet(key)  # Used for file encryption
+
+    else:
+        wallet = PlainWallet()
+    wallet.instance()
+    return wallet
